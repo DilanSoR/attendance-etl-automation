@@ -1,0 +1,6 @@
+pandas
+numpy
+python-dotenv
+psycopg2
+sshtunnel
+openpyxl
