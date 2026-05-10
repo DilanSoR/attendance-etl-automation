@@ -63,8 +63,8 @@ automatizacion-etl-asistencias/
     └── asistencias/
 ```
 ---
----
-##Flujo del proceso:
+
+## Flujo del proceso:
 
 ```
 Archivos Excel
@@ -83,9 +83,9 @@ Actualización de estatus
 ```
 ---
 
-##Lógica de negocio
+## Lógica de negocio
 
-#Los alumnos son identificados mediante:
+# Los alumnos son identificados mediante:
 
 - nombre completo normalizado
 - correo electrónico normalizado
@@ -95,14 +95,14 @@ Actualización de estatus
 - Tiene al menos una asistencia	ACTIVO
 - No tiene asistencias en el periodo	INACTIVO
 
-#Los alumnos con estatus:
+# Los alumnos con estatus:
 
 - BAJA
 - CONCLUIDO
-
 no son modificados automáticamente.
+
 ---
-##Variables de entorno
+## Variables de entorno
 
 Crear un archivo .env:
 
@@ -119,19 +119,19 @@ SSH_USER=
 SSH_PASSWORD=
 ```
 ---
-##Instalación
+## Instalación
 Clonar repositorio:
 
 ```txt
 git clone [https://github.com/](https://github.com/DilanSoR/attendance-etl-automation.git)
 ```
 
-#Instalar dependencias:
+# Instalar dependencias:
 ```txt
 pip install -r requirements.txt
 ```
 ---
-##Ejemplo de ejecución: 
+## Ejemplo de ejecución: 
 ```txt
 python microsoft.py '.\inputs\asistencia.xlsx\'
 --grupo 15 \
@@ -141,7 +141,7 @@ python microsoft.py '.\inputs\asistencia.xlsx\'
 ```
 ---
 
-##Salidas generadas
+## Salidas generadas
 Scripts SQL:
 
 ```txt
@@ -163,13 +163,13 @@ FROM aprobado2
 WHERE id = 1124 AND estatus NOT IN ('BAJA', 'CONCLUIDO');
 ```
 ---
-##Reportes de registros sin match
+# Reportes de registros sin match
 
 Archivos Excel con registros no identificados.
 
 - errores_microsoft_grupo_101.xlsx
 ---
-#Problemas resueltos:
+# Problemas resueltos:
 
 - Diferencias entre formatos de Excel
 - Variaciones en nombres y acentos
@@ -179,7 +179,7 @@ Archivos Excel con registros no identificados.
 - Sincronización de datos académicos
 - Conexión segura a base de datos remota
 ---
-#Mejoras futuras:
+# Mejoras futuras:
 
 - Actualización directa a base de datos
 - Dashboard de monitoreo
@@ -189,6 +189,6 @@ Archivos Excel con registros no identificados.
 - Orquestación con Airflow
 - Métricas de calidad de datos
 ---
-#Autor:
+# Autor:
 Eric Dilan Soriano Rosales
 ---
