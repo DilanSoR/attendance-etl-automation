@@ -44,7 +44,7 @@ El objetivo principal es reducir trabajo manual operativo, mejorar la consistenc
 ---
 
 # Estructura del proyecto
-
+---
 ```txt
 automatizacion-etl-asistencias/
 │
@@ -62,7 +62,9 @@ automatizacion-etl-asistencias/
 └── input/
     └── asistencias/
 ```
-#Flujo del proceso:
+---
+---
+##Flujo del proceso:
 
 
 Archivos Excel
@@ -78,11 +80,11 @@ Validación de asistencias
 Generación de scripts SQL
       ↓
 Actualización de estatus
+---
 
+##Lógica de negocio
 
-#Lógica de negocio
-
-Los alumnos son identificados mediante:
+#Los alumnos son identificados mediante:
 
 -nombre completo normalizado
 -correo electrónico normalizado
@@ -92,14 +94,14 @@ Los alumnos son identificados mediante:
 -Tiene al menos una asistencia	ACTIVO
 -No tiene asistencias en el periodo	INACTIVO
 
-Los alumnos con estatus:
+#Los alumnos con estatus:
 
 -BAJA
 -CONCLUIDO
 
 no son modificados automáticamente.
-
-#Variables de entorno
+---
+##Variables de entorno
 
 Crear un archivo .env:
 
@@ -115,8 +117,8 @@ SSH_PORT=
 SSH_USER=
 SSH_PASSWORD=
 ```
-
-#Instalación
+---
+##Instalación
 Clonar repositorio:
 
 ```txt
@@ -127,18 +129,18 @@ git clone [https://github.com/](https://github.com/DilanSoR/attendance-etl-autom
 ```txt
 pip install -r requirements.txt
 ```
-
-#Ejemplo de ejecución: 
+---
+##Ejemplo de ejecución: 
 ```txt
-python microsoft.py asistencia.xlsx \
---grupo 101 \
---hojas "Grupo A" "Grupo B" \
+python microsoft.py '.\inputs\asistencia.xlsx\'
+--grupo 15 \
+--hojas "CS" "IA" \
 --inicio 2026-05-01 \
 --fin 2026-05-07
 ```
+---
 
-
-#Salidas generadas
+##Salidas generadas
 Scripts SQL:
 
 ```txt
@@ -159,14 +161,15 @@ SELECT 1124, 'ACTIVO', 'Asistencia registrada', NOW()
 FROM aprobado2
 WHERE id = 1124 AND estatus NOT IN ('BAJA', 'CONCLUIDO');
 ```
-
-#Reportes de registros sin match
+---
+##Reportes de registros sin match
 
 Archivos Excel con registros no identificados.
 
 -errores_microsoft_grupo_101.xlsx
+---
+#Problemas resueltos:
 
-#Problemas resueltos
 -Diferencias entre formatos de Excel
 -Variaciones en nombres y acentos
 -Correos faltantes o duplicados
@@ -174,8 +177,9 @@ Archivos Excel con registros no identificados.
 -Reducción de trabajo manual
 -Sincronización de datos académicos
 -Conexión segura a base de datos remota
-
+---
 #Mejoras futuras:
+
 -Actualización directa a base de datos
 -Dashboard de monitoreo
 -Sistema de logs
@@ -184,7 +188,7 @@ Archivos Excel con registros no identificados.
 -Orquestación con Airflow
 -Métricas de calidad de datos
 -Detección automática de duplicados
-
+---
 #Autor:
 Eric Dilan Soriano Rosales
-
+---
